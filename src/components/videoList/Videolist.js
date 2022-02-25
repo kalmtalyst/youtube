@@ -1,13 +1,13 @@
 import React from "react";
 import Video from "../video/Video";
+import "./videoList.css";
 
 function VideoList(props) {
   return (
     <div>
-      <h1>Video List</h1>
-      <ul>
+      <ul className="videoList">
         {props.videoItems.map((videoItem) => {
-          return <Video videoItem={videoItem} key={videoItem.id} />;
+          return <Video videoItem={videoItem} key={videoItem.etag} />;
         })}
       </ul>
     </div>
