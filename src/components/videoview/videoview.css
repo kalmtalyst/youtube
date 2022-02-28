@@ -1,0 +1,13 @@
+.viewBox {
+  width: 100%;
+  height: 100%;
+}
+
+.viewBox .videoFrame {
+  width: 100%;
+  height: 550px;
+  border: none;
+}
+.txtContainer p {
+  font-size: 14px;
+}
