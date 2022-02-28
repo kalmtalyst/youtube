@@ -2,12 +2,18 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import VideoList from "./components/videoList/Videolist";
 import SearchBar from "./components/searchBar/SearchBar";
+import VideoView from "./components/videoview/VideoView";
 
 function App() {
   const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
   const [videoItems, setVideoItems] = useState([]);
-
+  const [selectView, setSelectView] = useState(null);
+  const selectVideo = (video) => {
+    setSelectView(video);
+    // 비디오가 받아지면 setSelectView 함수로 state 값 업데이트
+  };
   const search = (searchValueTxt) => {
+    setSelectView(null);
     const requestOptions = {
       method: "GET",
       redirect: "follow",
@@ -39,7 +45,20 @@ function App() {
   return (
     <div className="App">
       <SearchBar searchResult={search} />
-      <VideoList videoItems={videoItems} />
+      <div className="contents">
+        {selectView && (
+          <div className="view">
+            <VideoView video={selectView} />
+          </div>
+        )}
+        <div className="list">
+          <VideoList
+            videoItems={videoItems}
+            onVideoClick={selectVideo}
+            display={selectView ? "rowlist" : "columlist"}
+          />
+        </div>
+      </div>
     </div>
   );
 }

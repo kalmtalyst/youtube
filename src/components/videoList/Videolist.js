@@ -7,7 +7,14 @@ function VideoList(props) {
     <div>
       <ul className="videoList">
         {props.videoItems.map((videoItem) => {
-          return <Video videoItem={videoItem} key={videoItem.etag} />;
+          return (
+            <Video
+              videoItem={videoItem}
+              key={videoItem.etag}
+              onVideoClick={props.onVideoClick}
+              display={props.display}
+            />
+          );
         })}
       </ul>
     </div>
