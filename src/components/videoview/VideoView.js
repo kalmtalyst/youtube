@@ -1,8 +1,8 @@
 import React from "react";
 import "./videoview.css";
 
-function VideoView(props) {
-  const clickedChannel = props.video.snippet.channelTitle;
+function VideoView({ video }) {
+  const clickedChannel = video.snippet.channelTitle;
   return (
     <div className="viewBox">
       {clickedChannel}
@@ -12,13 +12,13 @@ function VideoView(props) {
           type="text/html"
           className="videoFrame"
           title="비디오플레이어"
-          src={`http://www.youtube.com/embed/${props.video.id}`}
+          src={`http://www.youtube.com/embed/${video.id}`}
         ></iframe>
       </div>
       <div className="txtContainer">
-        <h2>{props.video.snippet.title}</h2>
-        <h3>{props.video.snippet.channelTitle}</h3>
-        <p>{props.video.snippet.description}</p>
+        <h2>{video.snippet.title}</h2>
+        <h3>{video.snippet.channelTitle}</h3>
+        <p>{video.snippet.description}</p>
       </div>
     </div>
   );
