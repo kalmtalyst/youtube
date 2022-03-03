@@ -2,14 +2,14 @@ import React from "react";
 import "./searchBar.css";
 import { useRef } from "react";
 
-function SearchBar(props) {
+function SearchBar({ searchResult }) {
   const searchRef = useRef();
 
   // 공통 함수
   const searchFnc = () => {
     console.log("entered");
     const value = searchRef.current.value;
-    props.searchResult(value);
+    searchResult(value);
   };
 
   const searchClick = () => {
@@ -27,6 +27,9 @@ function SearchBar(props) {
   return (
     <div className="searchArea">
       <div className="logoArea">
+        <button className="leftMenuBtn">
+          <i class="fa fa-solid fa-bars"></i>
+        </button>
         <h1>
           <img src="/imgs/logo.png" alt="youtube" className="logoImg" />
         </h1>
@@ -43,10 +46,19 @@ function SearchBar(props) {
         <button className="searchBtn" onClick={searchClick}>
           <img src="/imgs/searchicon.png" alt="search" />
         </button>
+        <button className="micBtn">
+          <i className="fa fa-solid fa-microphone"></i>
+        </button>
       </div>
       <div className="topMenuArea">
-        <button className="gridMenuBtn">
-          <img src="/imgs/gridmenuicon.png" alt="top menu" />
+        <button className="rightMenuBtn">
+          <i className="fa fa-solid fa-grip-vertical"></i>
+        </button>
+        <button className="rightMenuBtn">
+          <i class="fa-solid fa-circle-ellipsis-vertical"></i>
+        </button>
+        <button className="rightMenuBtn">
+          <i class="fa fa-solid fa-user"></i>
         </button>
       </div>
       {/* right-side */}
