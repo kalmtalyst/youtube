@@ -2,17 +2,17 @@ import React from "react";
 import Video from "../video/Video";
 import "./videoList.css";
 
-function VideoList(props) {
+function VideoList({ videoItems, onVideoClick, display }) {
   return (
     <div>
       <ul className="videoList">
-        {props.videoItems.map((videoItem) => {
+        {videoItems.map((videoItem) => {
           return (
             <Video
               videoItem={videoItem}
               key={videoItem.etag}
-              onVideoClick={props.onVideoClick}
-              display={props.display}
+              onVideoClick={onVideoClick}
+              display={display}
             />
           );
         })}
