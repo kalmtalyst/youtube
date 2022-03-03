@@ -3,21 +3,25 @@ import "./menuBar.css";
 
 function MenuBar(params) {
   return (
-    <div className="menuberArea">
+    <div className="menuBarArea">
       <button className="menuBtn">
-        <i class="fa fas fa-home">홈</i>
+        <i class="fa fas fa-home"></i>홈
       </button>
       <button className="menuBtn">
-        <i class="fa fas fa-fire">인기</i>
+        <i class="fa fas fa-fire"></i>
+        인기
       </button>
       <button className="menuBtn">
-        <i class="fa fa-solid fa-globe">탐색</i>
+        <i class="fa fa-solid fa-globe"></i>
+        탐색
       </button>
       <button className="menuBtn">
-        <i class="fa fas fa-youtube">구독</i>
+        <i class="fa fas fa-youtube"></i>
+        구독
       </button>
       <button className="menuBtn">
-        <i class="fas fa-box">보관함</i>
+        <i class="fas fa-box"></i>
+        보관함
       </button>
     </div>
   );
