@@ -11,16 +11,16 @@ const Home = ({ onVideoClick, selectView, videoItems }) => {
         <MenuBar />
       </div>
       <div className="contents">
-        {selectView && (
+        {/* {selectView && (
           <div className="view">
             <VideoView video={selectView} />
           </div>
-        )}
+        )} */}
         <div className="list">
           <VideoList
             videoItems={videoItems}
             onVideoClick={onVideoClick}
-            display={selectView ? "rowlist" : "columlist"}
+            display="columlist"
           />
         </div>
       </div>

@@ -33,10 +33,29 @@
 .titleData {
   text-align: left;
   padding: 16px;
+  display: flex;
+}
+.titleData .channelImg {
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.titleData .channelImg img {
+  width: 36px;
+  height: 36px;
+}
+.title,
+.chennelTitle {
+  margin: 0;
+  font-size: 0.925rem;
 }
 .title {
   font-size: 14px;
 }
 .chennelTitle {
   font-size: 11px;
+  /* font-size: 0.7rem;
+  color: #c0c0c0; */
 }

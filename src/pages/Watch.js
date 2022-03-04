@@ -10,16 +10,16 @@ const Watch = ({ onVideoClick, selectView, videoItems }) => {
       <div className="sideBar">
         <MenuBar />
       </div>
-      {selectView && (
-        <div className="view">
-          <VideoView video={selectView} />
-        </div>
-      )}
+
+      <div className="view">
+        <VideoView video={selectView} />
+      </div>
+
       <div className="list">
         <VideoList
           videoItems={videoItems}
           onVideoClick={onVideoClick}
-          display={selectView ? "rowlist" : "columlist"}
+          display="rowlist"
         />
       </div>
     </div>

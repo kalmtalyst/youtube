@@ -1,15 +1,19 @@
 import React from "react";
 import "./searchBar.css";
 import { useRef } from "react";
+import { navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Watch from "./../../pages/Watch";
 
 function SearchBar({ searchResult }) {
   const searchRef = useRef();
-
+  let navigate = useNavigate();
   // 공통 함수
   const searchFnc = () => {
     console.log("entered");
     const value = searchRef.current.value;
     searchResult(value);
+    navigate(`/search?search_query=${value}`);
   };
 
   const searchClick = () => {
@@ -31,7 +35,9 @@ function SearchBar({ searchResult }) {
           <i class="fa fa-solid fa-bars"></i>
         </button>
         <h1>
-          <img src="/imgs/logo.png" alt="youtube" className="logoImg" />
+          <Link to="/">
+            <img src="/imgs/logo.png" alt="youtube" className="logoImg" />
+          </Link>
         </h1>
       </div>
       {/* left-side */}
@@ -55,10 +61,10 @@ function SearchBar({ searchResult }) {
           <i className="fa fa-solid fa-grip-vertical"></i>
         </button>
         <button className="rightMenuBtn">
-          <i class="fa-solid fa-circle-ellipsis-vertical"></i>
+          <i className="fa-solid fa-circle-ellipsis-vertical"></i>
         </button>
         <button className="rightMenuBtn">
-          <i class="fa fa-solid fa-user"></i>
+          <i className="fa fa-solid fa-user"></i>
         </button>
       </div>
       {/* right-side */}

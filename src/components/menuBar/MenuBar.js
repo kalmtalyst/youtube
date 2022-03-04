@@ -1,12 +1,15 @@
 import React from "react";
 import "./menuBar.css";
+import { Link } from "react-router-dom";
 
 function MenuBar(params) {
   return (
     <div className="menuBarArea">
-      <button className="menuBtn">
-        <i class="fa fas fa-home"></i>홈
-      </button>
+      <Link to="">
+        <button className="menuBtn">
+          <i class="fa fas fa-home"></i>홈
+        </button>
+      </Link>
       <button className="menuBtn">
         <i class="fa fas fa-fire"></i>
         인기
