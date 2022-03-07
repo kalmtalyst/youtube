@@ -53,6 +53,11 @@
 }
 .title {
   font-size: 14px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all; /* 영문을 위한 설정 */
 }
 .chennelTitle {
   font-size: 11px;

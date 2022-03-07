@@ -16,6 +16,10 @@
 .contents-wrap .sideBar {
   flex: 0 0 70px;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 @media screen and (max-width: 1200px) {
   .contents {
     flex-direction: column;

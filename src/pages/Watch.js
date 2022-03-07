@@ -4,15 +4,11 @@ import MenuBar from "../components/menuBar/MenuBar";
 import VideoList from "../components/videoList/Videolist";
 import VideoView from "../components/videoview/VideoView";
 
-const Watch = ({ onVideoClick, selectView, videoItems }) => {
+const Watch = ({ onVideoClick, selectView, videoItems, selectedWatch }) => {
   return (
     <div className="contents">
-      <div className="sideBar">
-        <MenuBar />
-      </div>
-
       <div className="view">
-        <VideoView video={selectView} />
+        <VideoView video={selectedWatch} />
       </div>
 
       <div className="list">

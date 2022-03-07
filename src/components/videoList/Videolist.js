@@ -1,7 +1,6 @@
 import React from "react";
 import Video from "../video/Video";
 import "./videoList.css";
-import { Link } from "react-router-dom";
 
 function VideoList({ videoItems, onVideoClick, display }) {
   return (

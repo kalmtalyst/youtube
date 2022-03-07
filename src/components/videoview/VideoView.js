@@ -2,10 +2,8 @@ import React from "react";
 import "./videoview.css";
 
 function VideoView({ video }) {
-  const clickedChannel = video.snippet.channelTitle;
   return (
     <div className="viewBox">
-      {clickedChannel}
       <div className="playVideoBox">
         <iframe
           id="player"

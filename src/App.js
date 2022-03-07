@@ -1,13 +1,13 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import VideoList from "./components/videoList/Videolist";
 import SearchBar from "./components/searchBar/SearchBar";
-import VideoView from "./components/videoview/VideoView";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Watch from "./pages/Watch";
-import Video from "./components/video/Video";
+
+let defaultVideos = JSON.parse(sessionStorage.getItem("defaultVideos")) || null;
+let selectedWatch = JSON.parse(sessionStorage.getItem("selectedWatch")) || null;
 
 function App({ youtube }) {
   // const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
@@ -16,11 +16,12 @@ function App({ youtube }) {
   const selectVideo = (video) => {
     setSelectView(video);
     // 비디오가 받아지면 setSelectView 함수로 state 값 업데이트
-    console.log(video);
+    selectedWatch = video;
+    // console.log(video);
   };
 
   const search = (searchValueTxt) => {
-    setSelectView(null);
+    setSelectView(null); // 검색시 뷰가 아닌 목록만 반환되도록 null로 업데이트
     youtube
       .searchResult(searchValueTxt)
       .then((videos) => setVideoItems(videos));
@@ -44,7 +45,10 @@ function App({ youtube }) {
   };
 
   useEffect(() => {
-    youtube.mostPopular().then((videos) => setVideoItems(videos));
+    youtube.mostPopular().then((videos) => {
+      setVideoItems(videos);
+      defaultVideos = videos;
+    });
 
     // const requestOptions = {
     //   method: "GET",
@@ -60,10 +64,19 @@ function App({ youtube }) {
     //   .catch((error) => console.log("error", error));
   }, []);
 
+  const clickLogo = () => {
+    setVideoItems(defaultVideos);
+  };
+
+  useEffect(() => {
+    sessionStorage.setItem("defaultVideos", JSON.stringify(defaultVideos));
+    sessionStorage.setItem("selectedWatch", JSON.stringify(selectedWatch));
+  }, [videoItems, selectView]);
+
   return (
     <div className="App">
       <BrowserRouter>
-        <SearchBar searchResult={search} />
+        <SearchBar searchResult={search} clickLogo={clickLogo} />
         <Routes>
           <Route
             path="/"
@@ -92,6 +105,7 @@ function App({ youtube }) {
                 videoItems={videoItems}
                 selectView={selectView}
                 onVideoClick={selectVideo}
+                selectedWatch={selectedWatch}
               />
             }
           />

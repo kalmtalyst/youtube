@@ -1,6 +1,7 @@
 import React from "react";
 import "./video.css";
 import { Link } from "react-router-dom";
+import * as common from "../../common/common";
 
 function Video({ videoItem, onVideoClick, display }) {
   const container = "container";
@@ -31,10 +32,13 @@ function Video({ videoItem, onVideoClick, display }) {
               <p className="title">{videoItem.snippet.title}</p>
               <p className="channelTitle">{videoItem.snippet.channelTitle}</p>
               <p className="channelTitle">
-                조회수 {videoItem.statistics.viewCount}
+                {common.publishDate(videoItem.snippet.publishedAt)}
               </p>
               <p className="channelTitle">
-                좋아요 {videoItem.statistics.likeCount}
+                조회수 {common.numberComma(videoItem.statistics.viewCount)}
+              </p>
+              <p className="channelTitle">
+                댓글 {common.numberComma(videoItem.statistics.commentCount)}
               </p>
             </div>
           </div>

@@ -1,13 +1,13 @@
 import React from "react";
 import "./searchBar.css";
 import { useRef } from "react";
-import { navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import Watch from "./../../pages/Watch";
 
-function SearchBar({ searchResult }) {
+function SearchBar({ searchResult, clickLogo }) {
   const searchRef = useRef();
   let navigate = useNavigate();
+
   // 공통 함수
   const searchFnc = () => {
     console.log("entered");
@@ -21,6 +21,7 @@ function SearchBar({ searchResult }) {
     searchFnc();
   };
 
+  // 서치박스(인풋)에 enter 시 호출될 함수
   const searchEnter = (e) => {
     if (e.key === "Enter") {
       searchFnc();
@@ -36,7 +37,12 @@ function SearchBar({ searchResult }) {
         </button>
         <h1>
           <Link to="/">
-            <img src="/imgs/logo.png" alt="youtube" className="logoImg" />
+            <img
+              src="/imgs/logo.png"
+              alt="youtube"
+              className="logoImg"
+              onClick={clickLogo}
+            />
           </Link>
         </h1>
       </div>
@@ -56,6 +62,7 @@ function SearchBar({ searchResult }) {
           <i className="fa fa-solid fa-microphone"></i>
         </button>
       </div>
+      {/* middle */}
       <div className="topMenuArea">
         <button className="rightMenuBtn">
           <i className="fa fa-solid fa-grip-vertical"></i>
