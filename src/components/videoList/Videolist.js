@@ -2,7 +2,7 @@ import React from "react";
 import Video from "../video/Video";
 import "./videoList.css";
 
-function VideoList({ videoItems, onVideoClick, display }) {
+function VideoList({ videoItems, onVideoClick, display, search }) {
   return (
     <div>
       <ul className="videoList">
@@ -12,6 +12,7 @@ function VideoList({ videoItems, onVideoClick, display }) {
             key={videoItem.etag}
             onVideoClick={onVideoClick}
             display={display}
+            search={search}
           />
         ))}
       </ul>

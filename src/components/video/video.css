@@ -64,3 +64,13 @@
   /* font-size: 0.7rem;
   color: #c0c0c0; */
 }
+.channel {
+  font-size: 0.7rem;
+  color: #c0c0c0;
+}
+
+.search > a {
+  width: 75%;
+  margin: auto;
+  display: block;
+}

@@ -3,11 +3,11 @@ import "./video.css";
 import { Link } from "react-router-dom";
 import * as common from "../../common/common";
 
-function Video({ videoItem, onVideoClick, display }) {
+function Video({ videoItem, onVideoClick, display, search }) {
   const container = "container";
   const displayClass = display === "rowlist" ? "list-h" : "list-v";
   return (
-    <li className={`${container} ${displayClass}`}>
+    <li className={`${container} ${displayClass} ${search ? "search" : ""}`}>
       <Link to="/watch">
         <div
           className="video"
@@ -30,16 +30,25 @@ function Video({ videoItem, onVideoClick, display }) {
             </div>
             <div>
               <p className="title">{videoItem.snippet.title}</p>
-              <p className="channelTitle">{videoItem.snippet.channelTitle}</p>
+              <p className="channel">{videoItem.snippet.channelTitle}</p>
               <p className="channelTitle">
                 {common.publishDate(videoItem.snippet.publishedAt)}
               </p>
-              <p className="channelTitle">
-                조회수 {common.numberComma(videoItem.statistics.viewCount)}
-              </p>
-              <p className="channelTitle">
-                댓글 {common.numberComma(videoItem.statistics.commentCount)}
-              </p>
+              {!search && (
+                <p className="channelTitle">
+                  조회수 {common.numberComma(videoItem.statistics.viewCount)}
+                </p>
+              )}
+              {!search && (
+                <p className="viewNum">
+                  댓글 {common.numberComma(videoItem.statistics.commentCount)}개
+                </p>
+              )}
+              {search && (
+                <div className="description">
+                  {videoItem.snippet.description}
+                </div>
+              )}
             </div>
           </div>
         </div>
